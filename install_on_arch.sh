@@ -38,7 +38,7 @@ echo -e  "\n [ Install GUI packages ] \n"
 sudo pacman -S qt5 qt6 gtk3 gtk4 --noconfirm
 
 echo -e  "\n [ Install Audio packages ] \n"
-sudo pacman -S pipewire wireplumber pipewire-pulse pipewire-alsa pipewire-jack pipewire-audio --noconfirm
+sudo pacman -S pipewire pipewire-pulse pipewire-alsa pipewire-jack pipewire-audio wireplumber --noconfirm
 
 echo -e  "\n [ Install Hyprland packages ] \n"
 sudo pacman -S uwsm hyprland xdg-desktop-portal-hyprland hyprpolkitagent hyprutils hyprpaper hyprlock hyprland-qt-support hyprland-qtutils --noconfirm
