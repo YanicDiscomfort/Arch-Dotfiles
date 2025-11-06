@@ -26,7 +26,7 @@ fi
 
 
 echo -e  "\n [ Install necessery packages ] \n"
-sudo pacman -S dracut ly bluez zsh --noconfirm
+sudo pacman -S dracut ly zsh --noconfirm
 
 echo -e "\n [ Install recommended cli-applications ] \n"
 sudo pacman -S base-devel git neovim vi yazi bc unzip zip 7zip unrar btop ffmpeg imagemagick ripgrep fastfetch --noconfirm
@@ -41,7 +41,7 @@ echo -e  "\n [ Install Audio packages ] \n"
 sudo pacman -S pipewire pipewire-pulse pipewire-alsa pipewire-jack pipewire-audio wireplumber --noconfirm
 
 echo -e  "\n [ Install Hyprland packages ] \n"
-sudo pacman -S uwsm hyprland xdg-desktop-portal-hyprland hyprpolkitagent hyprutils hyprpaper hyprlock hyprland-qt-support hyprland-qtutils --noconfirm
+sudo pacman -S hyprland xdg-desktop-portal-hyprland hyprpolkitagent hyprutils hyprpaper hyprlock hyprland-qt-support hyprland-qtutils --noconfirm
 
 echo -e  "\n [ Install grafic packages ] \n"
 sudo pacman -S mesa wayland xorg-xwayland --noconfirm
@@ -97,7 +97,7 @@ echo -e  "\n [ install dotfiles ] \n"
 if [ ! -d ~/.dotfiles ]; then
     mkdir ~/.dotfiles
 fi
-cp flavours/ ~/.dofiles/ -r 
+cp flavours/ ~/.dotfiles/ -r
 
 echo -e  "\n [ apply Catppuccin-Flavour as Default ] \n"
 cp -rf config/* ~/.config/
@@ -125,7 +125,7 @@ N
 EOF
 cp zshrc ~/.zshrc
 
-echo -e "\n Installation Complete \n now you should reboot!\n and dont forget to switch to Hyprland (uwsm managed) in ly-dm \n"
+echo -e "\n Installation Complete \n now you should reboot!\n and dont forget to switch to Hyprland in ly-dm \n"
 echo -e "\n reboot now? [y/n] \n"
 read reb
 

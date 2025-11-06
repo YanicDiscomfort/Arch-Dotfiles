@@ -1,4 +1,4 @@
-My Dotfiles for uwsm managed Hyprland
+My Dotfiles for Hyprland
 - WM: Hyprland
 - App-Launcher: Rofi
 - Terminal: Kitty
@@ -29,7 +29,7 @@ chmod +x install_on_arch.sh && ./install_on_arch.sh
 
 ### Todo
 
-- [ ] fix gtk-theme dotfiles (wont apply automaticly)
+- [x] fix gtk-theme dotfiles (wont apply automaticly)
 - [ ] add waybar config
 - [ ] add rofi config
 - [ ] add swaync config
