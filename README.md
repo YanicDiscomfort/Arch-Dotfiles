@@ -33,7 +33,7 @@ chmod +x install_on_arch.sh && ./install_on_arch.sh
 - [ ] add waybar config
 - [ ] add rofi config
 - [ ] add swaync config
-- [ ] add ly-dm config
+- [x] add ly-dm config
 - [ ] add dotfile switcher
     - [ ] add cattpuccin theme
     - [ ] add undertale theme
