@@ -1,5 +1,6 @@
 #!/bin/bash
 set -euo pipefail
+ZSH_CUSTOM=~/.oh-my-zsh/custom
 
 echo -e "\n [ Update System ] \n"
 sudo pacman -Syyu --noconfirm
@@ -72,13 +73,8 @@ rm -fr yay
 echo -e  "\n [ Enable Display-Manager (ly-dm) ] \n"
 sudo systemctl enable ly
 
-echo -e  "\n [ enable polkit, hyprpaper and waybar ] \n"
-systemctl --user enable --now hyprpolkitagent.service
-systemctl --user enable --now waybar.service
-systemctl --user enable --now hyprpaper.service
-
 echo -e  "\n [ install dotfiles ] \n"
-cp -f ly/config.ini /etc/ly/config.ini
+sudo cp -f ly/config.ini /etc/ly/config.ini
 
 echo -e  "\n [ install dotfiles ] \n"
 if [ ! -d ~/.dotfiles ]; then
