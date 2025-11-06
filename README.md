@@ -27,6 +27,14 @@ chmod +x install_on_arch.sh && ./install_on_arch.sh
 
 ----
 
+### Wallpaper
+Wallpaper source https://wall.alphacoders.com/big.php?i=1233212
+
+> the image is modified with [dpic](https://github.com/doprz/dipc), for the catppuccin mocha style
+
+
+----
+
 ### Todo
 
 - [x] fix gtk-theme dotfiles (wont apply automaticly)
