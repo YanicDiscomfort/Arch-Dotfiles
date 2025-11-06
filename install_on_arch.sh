@@ -94,6 +94,9 @@ systemctl --user enable --now waybar.service
 systemctl --user enable --now hyprpaper.service
 
 echo -e  "\n [ install dotfiles ] \n"
+cp -f ly/config.ini /etc/ly/config.ini
+
+echo -e  "\n [ install dotfiles ] \n"
 if [ ! -d ~/.dotfiles ]; then
     mkdir ~/.dotfiles
 fi
