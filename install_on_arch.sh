@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 
 echo -e "\n [ Update System ] \n"
 sudo pacman -Syyu --noconfirm
@@ -27,8 +28,9 @@ sudo pacman -S mesa wayland xorg-xwayland qt6-wayland qt5-wayland --noconfirm
 echo -e  "\n [ Install GUI packages ] \n"
 sudo pacman -S qt5 qt6 gtk3 gtk4 --noconfirm
 
+# TODO: make pipewire-jack install
 echo -e  "\n [ Install Audio packages ] \n"
-sudo pacman -S pipewire pipewire-pulse pipewire-alsa pipewire-jack pipewire-audio wireplumber --noconfirm
+sudo pacman -S pipewire pipewire-pulse pipewire-alsa pipewire-audio wireplumber --noconfirm
 
 echo -e  "\n [ Install Hyprland packages ] \n"
 sudo pacman -S hyprland xdg-desktop-portal-hyprland hyprpolkitagent hyprutils hyprpaper hyprlock hyprland-qt-support hyprland-qtutils --noconfirm
