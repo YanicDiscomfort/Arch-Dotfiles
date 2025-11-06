@@ -3,16 +3,6 @@
 echo -e "\n [ Update System ] \n"
 sudo pacman -Syyu --noconfirm
 
-
-echo -e "\e[32m do you want to install bluetooth [y/n] \e[0m"
-read bluez
-
-echo -e "\e[32m do you want to install yay [y/n] \e[0m"
-read yay
-
-echo -e "\e[32m do you want to install flatpak [y/n] \e[0m"
-read flatpak
-
 echo -e "\e[32m are you using an amd or intel processor [amd/intel] \e[0m"
 read amd
 if [ "$amd" == "amd" ]; then
@@ -46,11 +36,9 @@ sudo pacman -S hyprland xdg-desktop-portal-hyprland hyprpolkitagent hyprutils hy
 echo -e  "\n [ Install grafic packages ] \n"
 sudo pacman -S mesa wayland xorg-xwayland --noconfirm
 
-if [ "$bluez" == "y" ]; then
-    echo -e  "\n [ Install Bluetooth packages ] \n"
-    sudo pacman -S bluez blueberry --noconfirm
-    sudo systemctl enable bluetooth
-fi
+echo -e  "\n [ Install Bluetooth packages ] \n"
+sudo pacman -S bluez blueberry --noconfirm
+sudo systemctl enable bluetooth
 
 echo -e  "\n [ Install Desktop packages ] \n"
 sudo pacman -S waybar rofi-wayland rofi-emoji udiskie brightnessctl swaync --noconfirm
@@ -67,23 +55,17 @@ sudo pacman -S otf-font-awesome nerd-fonts --noconfirm
 echo -e  "\n [ Install Shenaniganz :3 ] \n"
 sudo pacman -S sl uwufetch viu cowsay asciiquarium --noconfirm
 
-if [ "$flatpak" == "y" ]; then
-    echo -e  "\n [ Install Flatpak ] \n"
-    sudo pacman -S xdg-desktop-portal-gtk flatpak --noconfirm
-fi
+echo -e  "\n [ Install Flatpak ] \n"
+sudo pacman -S xdg-desktop-portal-gtk flatpak --noconfirm
 
+echo -e  "\n [ Install yay ] \n"
+sudo pacman -S go --noconfirm
 
-if [ "$yay" == "y" ]; then
-    echo -e  "\n [ Install yay ] \n"
-    sudo pacman -S go --noconfirm
-
-    git clone https://aur.archlinux.org/yay.git 
-    cd yay/
-    makepkg -si
-    cd ..
-    rm -fr yay
-
-fi
+git clone https://aur.archlinux.org/yay.git
+cd yay/
+makepkg -si
+cd ..
+rm -fr yay
 
 echo -e  "\n [ Enable Display-Manager (ly-dm) ] \n"
 sudo systemctl enable ly
@@ -121,11 +103,19 @@ fi
 cp themes/* ~/.themes -r 
 
 echo -e  "\n [ install Oh-My-Zsh ] \n"
+sudo pacman -S zsh-autosuggestions zsh-syntax-highlighting zsh --noconfirm
 sudo chsh -s /bin/zsh $USER
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" <<EOF
 N
 EOF
+
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
+git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git $ZSH_CUSTOM/plugins/zsh-autocomplete
+
+yay -S --noconfirm zsh-theme-powerlevel10k-git
 cp zshrc ~/.zshrc
 
 echo -e "\n Installation Complete \n now you should reboot!\n and dont forget to switch to Hyprland in ly-dm \n"
