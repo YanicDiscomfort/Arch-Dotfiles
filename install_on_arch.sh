@@ -47,7 +47,7 @@ echo -e  "\n [ Install Desktop packages ] \n"
 sudo pacman -S waybar rofi-wayland rofi-emoji udiskie brightnessctl swaync --noconfirm
 
 echo -e  "\n [ Install recommended Desktop applications ] \n"
-sudo pacman -S kitty qt6ct nwg-look pavucontrol thunar mpv amberol vivaldi vivaldi-ffmpeg-codecs --noconfirm
+sudo pacman -S kitty qt6ct kvantum nwg-look pavucontrol thunar mpv amberol vivaldi vivaldi-ffmpeg-codecs --noconfirm
 
 echo -e  "\n [ Install Thunar plugins ] \n"
 sudo pacman -S file-roller thunar-archive-plugin thunar-media-tags-plugin gvfs ffmpegthumbnailer tumbler --noconfirm
