@@ -1,3 +1,5 @@
+@import "~/.config/rofi/theme.rasi"
+
 configuration {
   modes: "window,drun,run,ssh";
 	font: "mono 12";
@@ -13,7 +15,7 @@ configuration {
 /*	on-menu-canceled: ;*/
 /*	on-menu-error: ;*/
 /*	on-screenshot-taken: ;*/
-/*	terminal: "rofi-sensible-terminal";*/
+	terminal: "kitty";
 /*	ssh-client: "ssh";*/
 /*	ssh-command: "{terminal} -e {ssh-client} {host} [-p {port}]";*/
 /*	run-command: "{cmd}";*/
