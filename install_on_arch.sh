@@ -47,7 +47,7 @@ echo -e  "\n [ Install Desktop packages ] \n"
 sudo pacman -S waybar rofi-wayland rofi-emoji udiskie brightnessctl swaync --noconfirm
 
 echo -e  "\n [ Install recommended Desktop applications ] \n"
-sudo pacman -S kitty qt6ct kvantum nwg-look pavucontrol thunar mpv amberol vivaldi vivaldi-ffmpeg-codecs --noconfirm
+sudo pacman -S kitty qt6ct kvantum nwg-look pavucontrol thunar mpv amberol vivaldi vivaldi-ffmpeg-codecs papirus-icon-theme --noconfirm
 
 echo -e  "\n [ Install Thunar plugins ] \n"
 sudo pacman -S file-roller thunar-archive-plugin thunar-media-tags-plugin gvfs ffmpegthumbnailer tumbler --noconfirm
@@ -94,7 +94,7 @@ sudo cp cursor/index.theme /usr/share/icons/default/index.theme
 
 cp icons/ ~/.icons -r
 
-echo -e  "\n [ install gtk themes ] \n"
+echo -e  "\n [ install gtk and folder themes ] \n"
 if [ ! -d ~/.themes ]; then
     mkdir ~/.themes
 fi
@@ -103,6 +103,8 @@ ln -sf "~/.themes/gtk-4.0/assets" "${HOME}/.config/gtk-4.0/assets"
 ln -sf "~/.themes/gtk-4.0/gtk.css" "${HOME}/.config/gtk-4.0/gtk.css"
 ln -sf "~/.themes/gtk-4.0/gtk-dark.css" "${HOME}/.config/gtk-4.0/gtk-dark.css"
 
+yay -S papirus-folders-catppuccin-git --noconfirm
+papirus-folders -C cat-mocha-red
 
 echo -e  "\n [ install Oh-My-Zsh ] \n"
 sudo pacman -S zsh-autosuggestions zsh-syntax-highlighting zsh --noconfirm
