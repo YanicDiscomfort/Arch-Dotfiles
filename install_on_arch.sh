@@ -98,7 +98,11 @@ echo -e  "\n [ install gtk themes ] \n"
 if [ ! -d ~/.themes ]; then
     mkdir ~/.themes
 fi
-cp themes/* ~/.themes -r 
+cp themes/* ~/.themes -r
+ln -sf "~/.themes/gtk-4.0/assets" "${HOME}/.config/gtk-4.0/assets"
+ln -sf "~/.themes/gtk-4.0/gtk.css" "${HOME}/.config/gtk-4.0/gtk.css"
+ln -sf "~/.themes/gtk-4.0/gtk-dark.css" "${HOME}/.config/gtk-4.0/gtk-dark.css"
+
 
 echo -e  "\n [ install Oh-My-Zsh ] \n"
 sudo pacman -S zsh-autosuggestions zsh-syntax-highlighting zsh --noconfirm

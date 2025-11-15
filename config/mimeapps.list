@@ -1,0 +1,9 @@
+[Added Associations]
+application/pdf=com.github.xournalpp.xournalpp.desktop;
+application/x-desktop=nvim.desktop;
+
+[Default Applications]
+application/x-desktop=nvim.desktop
+x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
+x-scheme-handler/discord=vesktop.desktop
+inode/directory=thunar.desktop
