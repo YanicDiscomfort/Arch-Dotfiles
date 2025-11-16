@@ -34,7 +34,7 @@ echo -e  "\n [ Install Audio packages ] \n"
 sudo pacman -S pipewire pipewire-pulse pipewire-alsa pipewire-audio wireplumber --noconfirm
 
 echo -e  "\n [ Install Hyprland packages ] \n"
-sudo pacman -S hyprland xdg-desktop-portal-hyprland hyprpolkitagent hyprutils hyprpaper hyprlock hyprland-qt-support hyprland-qtutils --noconfirm
+sudo pacman -S hyprland xdg-desktop-portal-hyprland hyprpolkitagent hyprutils hyprpaper hyprlock hyprland-qt-support hyprland-guiutils --noconfirm
 
 echo -e  "\n [ Install grafic packages ] \n"
 sudo pacman -S mesa wayland xorg-xwayland --noconfirm
