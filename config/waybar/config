@@ -1,0 +1,11 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 42,
+  "spacing": 6,
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": ["wireplumber", "battery", "tray"],
+  "reload_style_on_change": true
+}
+
