@@ -37,6 +37,7 @@ Wallpaper source https://wall.alphacoders.com/big.php?i=1233212
 
 ### Todo
 
+- [ ] add clipboard manager
 - [x] fix gtk-theme dotfiles (wont apply automaticly)
 - [ ] add waybar config
 - [ ] add rofi config
