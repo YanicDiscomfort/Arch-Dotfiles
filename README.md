@@ -1,6 +1,6 @@
 My Dotfiles for Hyprland
 - WM: Hyprland
-- App-Launcher: Rofi
+- App-Launcher: fuzzel
 - Terminal: Kitty
 - File-Manager: Thunar, yazi
 - Bar: Waybar
@@ -37,10 +37,10 @@ Wallpaper source https://wall.alphacoders.com/big.php?i=1233212
 
 ### Todo
 
-- [ ] add clipboard manager
+- [x] add clipboard manager
 - [x] fix gtk-theme dotfiles (wont apply automaticly)
-- [ ] add waybar config
-- [ ] add rofi config
+- [-] add waybar config
+- [x] add fuzzel config
 - [ ] add swaync config
 - [x] add ly-dm config
 - [ ] add dotfile switcher
