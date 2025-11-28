@@ -45,5 +45,4 @@ Wallpaper source https://wall.alphacoders.com/big.php?i=1233212
 - [x] add ly-dm config
 - [ ] add dotfile switcher
     - [ ] add cattpuccin theme
-    - [ ] add undertale theme
     - [ ] add GAM theme
