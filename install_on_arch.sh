@@ -1,112 +1,241 @@
 #!/bin/bash
 set -euo pipefail
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+MAGENTA='\033[0;35m'
+CYAN='\033[0;36m'
+NC='\033[0m' # No Color
+BOLD='\033[1m'
+
 ZSH_CUSTOM=~/.oh-my-zsh/custom
 
-echo -e "\n [ Update System ] \n"
+print_header() {
+    echo -e "\n${BOLD}${CYAN}╔════════════════════════════════════════════════════════════════╗${NC}"
+    echo -e "${BOLD}${CYAN}║${NC} ${BOLD}${GREEN}$1${NC}"
+    echo -e "${BOLD}${CYAN}╚════════════════════════════════════════════════════════════════╝${NC}\n"
+}
+
+print_success() {
+    echo -e "${GREEN}✓${NC} $1"
+}
+
+print_error() {
+    echo -e "${RED}✗${NC} $1"
+}
+
+print_info() {
+    echo -e "${BLUE}ℹ${NC} $1"
+}
+
+print_info "Please enter sudo password..."
+sudo -v
+
+# Keep sudo session alive in background
+while true; do sudo -n true; sleep 50; kill -0 "$" || exit; done 2>/dev/null &
+
+# ============================================================================
+# System Update
+# ============================================================================
+print_header "System Update"
 sudo pacman -Syyu --noconfirm
+print_success "System successfully updated"
 
-echo -e "\e[32m are you using an amd or intel processor [amd/intel] \e[0m"
-read amd
-if [ "$amd" == "amd" ]; then
-    sudo pacman -S amd-ucode --noconfirm
-elif [ "$amd" == "intel" ]; then
-    sudo pacman -S intel-ucode --noconfirm
-else
-    echo -e "\033[31m No valid input \033[0m"
-    exit 1
-fi
+# ============================================================================
+# Processor Microcode
+# ============================================================================
+print_header "Processor Microcode Installation"
+echo -e "${YELLOW}Are you using an AMD or Intel processor?${NC}"
+echo -e "${CYAN}[1]${NC} AMD"
+echo -e "${CYAN}[2]${NC} Intel"
+read -p "Choice [1/2]: " cpu_choice
 
+case $cpu_choice in
+    1|amd|AMD)
+        sudo pacman -S amd-ucode --noconfirm
+        print_success "AMD microcode installed"
+        ;;
+    2|intel|Intel|INTEL)
+        sudo pacman -S intel-ucode --noconfirm
+        print_success "Intel microcode installed"
+        ;;
+    *)
+        print_error "Invalid input. Installation will be aborted."
+        exit 1
+        ;;
+esac
 
-echo -e  "\n [ Install necessery packages ] \n"
+# ============================================================================
+# Essential Base Packages
+# ============================================================================
+print_header "Installation: Essential Base Packages"
 sudo pacman -S dracut ly zsh --noconfirm
+print_success "Base packages installed"
 
-echo -e "\n [ Install recommended cli-applications ] \n"
-sudo pacman -S base-devel git neovim vi yazi bc unzip zip 7zip unrar btop ffmpeg imagemagick ripgrep fastfetch --noconfirm
+# ============================================================================
+# CLI Applications
+# ============================================================================
+print_header "Installation: Recommended CLI Applications"
+sudo pacman -S base-devel git neovim vi yazi bc unzip zip 7zip unrar btop \
+               ffmpeg imagemagick ripgrep fastfetch --noconfirm
+print_success "CLI applications installed"
 
-echo -e  "\n [ Install wayland and grafic-drivers packages ] \n"
+# ============================================================================
+# Wayland & Graphics Drivers
+# ============================================================================
+print_header "Installation: Wayland & Graphics Drivers"
 sudo pacman -S mesa wayland xorg-xwayland qt6-wayland qt5-wayland --noconfirm
+print_success "Wayland & graphics drivers installed"
 
-echo -e  "\n [ Install GUI packages ] \n"
+# ============================================================================
+# GUI Packages
+# ============================================================================
+print_header "Installation: GUI Libraries"
 sudo pacman -S qt5 qt6 gtk3 gtk4 --noconfirm
+print_success "GUI libraries installed"
 
-# TODO: make pipewire-jack install
-echo -e  "\n [ Install Audio packages ] \n"
-sudo pacman -S pipewire pipewire-pulse pipewire-alsa pipewire-audio wireplumber --noconfirm
+# ============================================================================
+# Audio (PipeWire)
+# ============================================================================
+print_header "Installation: Audio System (PipeWire)"
+sudo pacman -S pipewire pipewire-pulse pipewire-alsa pipewire-audio \
+               pipewire-jack wireplumber --noconfirm
+print_success "Audio system installed"
 
-echo -e  "\n [ Install Hyprland packages ] \n"
-sudo pacman -S hyprland xdg-desktop-portal-hyprland hyprpolkitagent hyprutils hyprpaper hyprlock hyprland-qt-support hyprland-guiutils --noconfirm
+# ============================================================================
+# Hyprland
+# ============================================================================
+print_header "Installation: Hyprland & Components"
+sudo pacman -S hyprland xdg-desktop-portal-hyprland hyprpolkitagent hyprutils \
+               hyprpaper hyprlock hyprland-qt-support hyprland-guiutils --noconfirm
+print_success "Hyprland installed"
 
-echo -e  "\n [ Install grafic packages ] \n"
-sudo pacman -S mesa wayland xorg-xwayland --noconfirm
-
-echo -e  "\n [ Install Bluetooth packages ] \n"
+# ============================================================================
+# Bluetooth
+# ============================================================================
+print_header "Installation: Bluetooth"
 sudo pacman -S bluez blueberry --noconfirm
 sudo systemctl enable bluetooth
+print_success "Bluetooth installed and enabled"
 
-echo -e  "\n [ Install Desktop packages ] \n"
+# ============================================================================
+# Desktop Components
+# ============================================================================
+print_header "Installation: Desktop Components"
 sudo pacman -S waybar fuzzel udiskie brightnessctl swaync wl-clipboard cliphist --noconfirm
+print_success "Desktop components installed"
 
-echo -e  "\n [ Install recommended Desktop applications ] \n"
-sudo pacman -S kitty qt6ct kvantum nwg-look pavucontrol thunar mpv amberol vivaldi vivaldi-ffmpeg-codecs papirus-icon-theme --noconfirm
+# ============================================================================
+# Desktop Applications
+# ============================================================================
+print_header "Installation: Recommended Desktop Applications"
+sudo pacman -S kitty qt6ct kvantum nwg-look pavucontrol thunar mpv amberol \
+               vivaldi vivaldi-ffmpeg-codecs papirus-icon-theme --noconfirm
+print_success "Desktop applications installed"
 
-echo -e  "\n [ Install Thunar plugins ] \n"
-sudo pacman -S file-roller thunar-archive-plugin thunar-media-tags-plugin gvfs ffmpegthumbnailer tumbler --noconfirm
+# ============================================================================
+# Thunar Plugins
+# ============================================================================
+print_header "Installation: Thunar Plugins"
+sudo pacman -S file-roller thunar-archive-plugin thunar-media-tags-plugin \
+               gvfs ffmpegthumbnailer tumbler --noconfirm
+print_success "Thunar plugins installed"
 
-echo -e  "\n [ Install common Fonts ] \n"
+# ============================================================================
+# Fonts
+# ============================================================================
+print_header "Installation: Fonts"
 sudo pacman -S otf-font-awesome nerd-fonts --noconfirm 
+print_success "Fonts installed"
 
-echo -e  "\n [ Install Shenaniganz :3 ] \n"
+# ============================================================================
+# Shenanigans 
+# ============================================================================
+print_header "Install Shenanigans :3"
 sudo pacman -S sl uwufetch viu cowsay asciiquarium --noconfirm
+print_success "Shenanigans installed owo"
 
-echo -e  "\n [ Install Flatpak ] \n"
+# ============================================================================
+# Flatpak
+# ============================================================================
+print_header "Installation: Flatpak"
 sudo pacman -S xdg-desktop-portal-gtk flatpak --noconfirm
+print_success "Flatpak installed"
 
-echo -e  "\n [ Install yay ] \n"
+# ============================================================================
+# yay (AUR Helper)
+# ============================================================================
+print_header "Installation: yay (AUR Helper)"
 sudo pacman -S go --noconfirm
-
 git clone https://aur.archlinux.org/yay.git
 cd yay/
-makepkg -si
+makepkg -si --noconfirm
 cd ..
-rm -fr yay
+rm -rf yay
+print_success "yay installed"
 
-echo -e  "\n [ Enable Display-Manager (ly-dm) ] \n"
+# ============================================================================
+# Display Manager
+# ============================================================================
+print_header "Configuration: Display Manager (ly)"
 sudo systemctl enable ly
-
-echo -e  "\n [ install dotfiles ] \n"
 sudo cp -f ly/config.ini /etc/ly/config.ini
+print_success "Display manager configured"
 
-echo -e  "\n [ install dotfiles ] \n"
+# ============================================================================
+# Dotfiles
+# ============================================================================
+print_header "Installation: Dotfiles"
 if [ ! -d ~/.dotfiles ]; then
-    mkdir ~/.dotfiles
+    mkdir -p ~/.dotfiles
 fi
-cp flavours/ ~/.dotfiles/ -r
+cp -r flavours/ ~/.dotfiles/
+print_success "Dotfiles copied"
 
-echo -e  "\n [ apply Catppuccin-Flavour as Default ] \n"
+# ============================================================================
+# Catppuccin Theme
+# ============================================================================
+print_header "Installation: Catppuccin Theme"
 cp -rf config/* ~/.config/
+print_success "Catppuccin theme applied"
 
-echo -e  "\n [ install icons and cursor ] \n"
+# ============================================================================
+# Icons & Cursor
+# ============================================================================
+print_header "Installation: Icons & Cursor"
 if [ ! -d ~/.icons ]; then
-    mkdir ~/.icons
+    mkdir -p ~/.icons
 fi
-sudo cp cursor/Bibata-Modern-Classic /usr/share/icons -r
+sudo cp -r cursor/Bibata-Modern-Classic /usr/share/icons/
 sudo cp cursor/index.theme /usr/share/icons/default/index.theme
+cp -r icons/ ~/.icons/
+print_success "Icons & cursor installed"
 
-cp icons/ ~/.icons -r
-
-echo -e  "\n [ install gtk and folder themes ] \n"
+# ============================================================================
+# GTK & Folder Themes
+# ============================================================================
+print_header "Installation: GTK & Folder Themes"
 if [ ! -d ~/.themes ]; then
-    mkdir ~/.themes
+    mkdir -p ~/.themes
 fi
-cp themes/* ~/.themes -r
-ln -sf "~/.themes/gtk-4.0/assets" "${HOME}/.config/gtk-4.0/assets"
-ln -sf "~/.themes/gtk-4.0/gtk.css" "${HOME}/.config/gtk-4.0/gtk.css"
-ln -sf "~/.themes/gtk-4.0/gtk-dark.css" "${HOME}/.config/gtk-4.0/gtk-dark.css"
+cp -r themes/* ~/.themes/
+
+# Create GTK-4.0 symlinks
+mkdir -p "${HOME}/.config/gtk-4.0"
+ln -sf "${HOME}/.themes/gtk-4.0/assets" "${HOME}/.config/gtk-4.0/assets"
+ln -sf "${HOME}/.themes/gtk-4.0/gtk.css" "${HOME}/.config/gtk-4.0/gtk.css"
+ln -sf "${HOME}/.themes/gtk-4.0/gtk-dark.css" "${HOME}/.config/gtk-4.0/gtk-dark.css"
 
 yay -S papirus-folders-catppuccin-git --noconfirm
 papirus-folders -C cat-mocha-red
+print_success "Themes installed"
 
-echo -e  "\n [ install Oh-My-Zsh ] \n"
+# ============================================================================
+# Oh-My-Zsh
+# ============================================================================
+print_header "Installation: Oh-My-Zsh"
 sudo pacman -S zsh-autosuggestions zsh-syntax-highlighting zsh --noconfirm
 sudo chsh -s /bin/zsh $USER
 
@@ -121,11 +250,23 @@ git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git $ZS
 
 yay -S --noconfirm zsh-theme-powerlevel10k-git
 cp zshrc ~/.zshrc
+print_success "Oh-My-Zsh installed"
 
-echo -e "\n Installation Complete \n now you should reboot!\n and dont forget to switch to Hyprland in ly-dm \n"
-echo -e "\n reboot now? [y/n] \n"
-read reb
+# ============================================================================
+# Completion
+# ============================================================================
+echo -e "\n${BOLD}${GREEN}╔════════════════════════════════════════════════════════════════╗${NC}"
+echo -e "${BOLD}${GREEN}║          Installation completed successfully! 🎉              ║${NC}"
+echo -e "${BOLD}${GREEN}╚════════════════════════════════════════════════════════════════╝${NC}\n"
 
-if [ $reb == "y" ]; then
+print_info "Don't forget to switch to Hyprland in ly-dm!"
+echo -e "\n${YELLOW}Do you want to reboot now? [y/n]${NC}"
+read -p "> " reboot_choice
+
+if [[ $reboot_choice =~ ^[jJyY]$ ]]; then
+    print_info "Rebooting system..."
+    sleep 2
     reboot
+else
+    print_info "You can reboot later with 'reboot'."
 fi
