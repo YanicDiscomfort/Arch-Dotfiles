@@ -44,7 +44,7 @@ sudo pacman -S bluez blueberry --noconfirm
 sudo systemctl enable bluetooth
 
 echo -e  "\n [ Install Desktop packages ] \n"
-sudo pacman -S waybar rofi-wayland rofi-emoji udiskie brightnessctl swaync --noconfirm
+sudo pacman -S waybar rofi-wayland rofi-emoji udiskie brightnessctl swaync wl-clipboard cliphist --noconfirm
 
 echo -e  "\n [ Install recommended Desktop applications ] \n"
 sudo pacman -S kitty qt6ct kvantum nwg-look pavucontrol thunar mpv amberol vivaldi vivaldi-ffmpeg-codecs papirus-icon-theme --noconfirm
