@@ -33,9 +33,6 @@ print_info() {
 print_info "Please enter sudo password..."
 sudo -v
 
-# Keep sudo session alive in background
-while true; do sudo -n true; sleep 50; kill -0 "$" || exit; done 2>/dev/null &
-
 # ============================================================================
 # System Update
 # ============================================================================
@@ -101,7 +98,7 @@ print_success "GUI libraries installed"
 # ============================================================================
 print_header "Installation: Audio System (PipeWire)"
 sudo pacman -S pipewire pipewire-pulse pipewire-alsa pipewire-audio \
-               pipewire-jack wireplumber --noconfirm
+               wireplumber --noconfirm
 print_success "Audio system installed"
 
 # ============================================================================
