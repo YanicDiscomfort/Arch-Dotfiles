@@ -177,7 +177,7 @@ print_success "yay installed"
 # Display Manager
 # ============================================================================
 print_header "Configuration: Display Manager (ly)"
-sudo systemctl enable ly
+sudo systemctl enable ly@tty2.service
 sudo cp -f ly/config.ini /etc/ly/config.ini
 print_success "Display manager configured"
 
