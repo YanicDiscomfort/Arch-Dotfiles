@@ -182,16 +182,6 @@ sudo cp -f ly/config.ini /etc/ly/config.ini
 print_success "Display manager configured"
 
 # ============================================================================
-# Dotfiles
-# ============================================================================
-print_header "Installation: Dotfiles"
-if [ ! -d ~/.dotfiles ]; then
-    mkdir -p ~/.dotfiles
-fi
-cp -r flavours/ ~/.dotfiles/
-print_success "Dotfiles copied"
-
-# ============================================================================
 # Catppuccin Theme
 # ============================================================================
 print_header "Installation: Catppuccin Theme"
