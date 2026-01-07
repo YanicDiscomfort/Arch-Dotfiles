@@ -137,16 +137,17 @@ sudo pacman -S xdg-desktop-portal-gtk flatpak --noconfirm
 print_success "Flatpak installed"
 
 # ============================================================================
-# yay (AUR Helper)
+# paru (AUR Helper)
 # ============================================================================
-print_header "Installation: yay (AUR Helper)"
-sudo pacman -S go --noconfirm
-git clone https://aur.archlinux.org/yay.git
-cd yay/
+print_header "Installation: paru (AUR Helper)"
+sudo pacman -S rustup --noconfirm
+git clone https://aur.archlinux.org/paru.git
+rustup default nightly
+cd paru/
 makepkg -si --noconfirm
 cd ..
-rm -rf yay
-print_success "yay installed"
+rm -rf paru
+print_success "paru installed"
 
 # ============================================================================
 # Display Manager
@@ -157,11 +158,12 @@ sudo cp -f ly/config.ini /etc/ly/config.ini
 print_success "Display manager configured"
 
 # ============================================================================
-# Catppuccin Theme
+# Dotfiles
 # ============================================================================
-print_header "Installation: Catppuccin Theme"
+print_header "Installation: Dotfiles"
 cp -rf config/* ~/.config/
-print_success "Catppuccin theme applied"
+hyprctl reload
+print_success "Dotfiles applied"
 
 # ============================================================================
 # Icons & Cursor
@@ -190,7 +192,7 @@ ln -sf "${HOME}/.themes/gtk-4.0/assets" "${HOME}/.config/gtk-4.0/assets"
 ln -sf "${HOME}/.themes/gtk-4.0/gtk.css" "${HOME}/.config/gtk-4.0/gtk.css"
 ln -sf "${HOME}/.themes/gtk-4.0/gtk-dark.css" "${HOME}/.config/gtk-4.0/gtk-dark.css"
 
-yay -S papirus-folders-catppuccin-git --noconfirm
+paru -S papirus-folders-catppuccin-git --noconfirm
 papirus-folders -C cat-mocha-red
 print_success "Themes installed"
 
@@ -201,16 +203,18 @@ print_header "Installation: Oh-My-Zsh"
 sudo pacman -S zsh-autosuggestions zsh-syntax-highlighting zsh --noconfirm
 sudo chsh -s /bin/zsh $USER
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" <<EOF
-N
-EOF
+if [ ! -d ~/.oh-my-zsh ]; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" <<EOF
+    N
+    EOF
+fi
 
 git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
 git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git $ZSH_CUSTOM/plugins/zsh-autocomplete
 
-yay -S --noconfirm zsh-theme-powerlevel10k-git
+paru -S --noconfirm zsh-theme-powerlevel10k-git
 cp zshrc ~/.zshrc
 print_success "Oh-My-Zsh installed"
 
@@ -218,7 +222,7 @@ print_success "Oh-My-Zsh installed"
 # Completion
 # ============================================================================
 echo -e "\n${BOLD}${GREEN}╔════════════════════════════════════════════════════════════════╗${NC}"
-echo -e "${BOLD}${GREEN}║          Installation completed successfully! 🎉              ║${NC}"
+echo -e "${BOLD}${GREEN}║          Installation completed successfully! 🎉               ║${NC}"
 echo -e "${BOLD}${GREEN}╚════════════════════════════════════════════════════════════════╝${NC}\n"
 
 print_info "Don't forget to switch to Hyprland in ly-dm!"
