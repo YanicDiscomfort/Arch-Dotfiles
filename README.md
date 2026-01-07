@@ -1,8 +1,8 @@
 My Dotfiles for Hyprland
 - WM: Hyprland
-- App-Launcher: fuzzel
+- App-Launcher: wofi
 - Terminal: Kitty
-- File-Manager: Thunar, yazi
+- File-Manager: nemo, yazi
 - Bar: Waybar
 - Browser: Vivaldi
 - Notifications: Swaync
@@ -39,10 +39,9 @@ Wallpaper source https://wall.alphacoders.com/big.php?i=1233212
 
 - [x] add clipboard manager
 - [x] fix gtk-theme dotfiles (wont apply automaticly)
-- [-] add waybar config
+- [ ] add waybar config
 - [x] add fuzzel config
 - [ ] add swaync config
 - [x] add ly-dm config
-- [ ] add dotfile switcher
-    - [ ] add cattpuccin theme
-    - [ ] add GAM theme
+- [ ] add automaticly configure Dracut
+- [ ] make AUR-helper choosable

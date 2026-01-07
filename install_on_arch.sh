@@ -41,34 +41,10 @@ sudo pacman -Syyu --noconfirm
 print_success "System successfully updated"
 
 # ============================================================================
-# Processor Microcode
-# ============================================================================
-print_header "Processor Microcode Installation"
-echo -e "${YELLOW}Are you using an AMD or Intel processor?${NC}"
-echo -e "${CYAN}[1]${NC} AMD"
-echo -e "${CYAN}[2]${NC} Intel"
-read -p "Choice [1/2]: " cpu_choice
-
-case $cpu_choice in
-    1|amd|AMD)
-        sudo pacman -S amd-ucode --noconfirm
-        print_success "AMD microcode installed"
-        ;;
-    2|intel|Intel|INTEL)
-        sudo pacman -S intel-ucode --noconfirm
-        print_success "Intel microcode installed"
-        ;;
-    *)
-        print_error "Invalid input. Installation will be aborted."
-        exit 1
-        ;;
-esac
-
-# ============================================================================
 # Essential Base Packages
 # ============================================================================
 print_header "Installation: Essential Base Packages"
-sudo pacman -S dracut ly zsh --noconfirm
+sudo pacman -S dracut ly pacman-contrib zsh --noconfirm
 print_success "Base packages installed"
 
 # ============================================================================
@@ -76,7 +52,7 @@ print_success "Base packages installed"
 # ============================================================================
 print_header "Installation: Recommended CLI Applications"
 sudo pacman -S base-devel git neovim vi yazi bc unzip zip 7zip unrar btop \
-               ffmpeg imagemagick ripgrep fastfetch --noconfirm
+               ffmpeg imagemagick ripgrep --noconfirm
 print_success "CLI applications installed"
 
 # ============================================================================
@@ -105,7 +81,7 @@ print_success "Audio system installed"
 # Hyprland
 # ============================================================================
 print_header "Installation: Hyprland & Components"
-sudo pacman -S hyprland xdg-desktop-portal-hyprland hyprpolkitagent hyprutils \
+sudo pacman -S hyprland xdg-desktop-portal-hyprland hyprpolkitagent hyprpwcenter hyprutils \
                hyprpaper hyprlock hyprland-qt-support hyprland-guiutils --noconfirm
 print_success "Hyprland installed"
 
@@ -113,7 +89,7 @@ print_success "Hyprland installed"
 # Bluetooth
 # ============================================================================
 print_header "Installation: Bluetooth"
-sudo pacman -S bluez blueberry --noconfirm
+sudo pacman -S bluez bluez-utils --noconfirm
 sudo systemctl enable bluetooth
 print_success "Bluetooth installed and enabled"
 
@@ -121,37 +97,36 @@ print_success "Bluetooth installed and enabled"
 # Desktop Components
 # ============================================================================
 print_header "Installation: Desktop Components"
-sudo pacman -S waybar fuzzel udiskie brightnessctl swaync wl-clipboard cliphist --noconfirm
+sudo pacman -S waybar wofi udiskie brightnessctl swaync wl-clipboard cliphist --noconfirm
 print_success "Desktop components installed"
 
 # ============================================================================
 # Desktop Applications
 # ============================================================================
 print_header "Installation: Recommended Desktop Applications"
-sudo pacman -S kitty qt6ct kvantum nwg-look pavucontrol thunar mpv amberol \
+sudo pacman -S kitty qt6ct kvantum nwg-look pavucontrol nemo mpv amberol \
                vivaldi vivaldi-ffmpeg-codecs papirus-icon-theme --noconfirm
 print_success "Desktop applications installed"
 
 # ============================================================================
-# Thunar Plugins
+# Nemo Plugins
 # ============================================================================
-print_header "Installation: Thunar Plugins"
-sudo pacman -S file-roller thunar-archive-plugin thunar-media-tags-plugin \
-               gvfs ffmpegthumbnailer tumbler --noconfirm
-print_success "Thunar plugins installed"
+print_header "Installation: Nemo Plugins"
+sudo pacman -S nemo-fileroller ffmpegthumbnailer --noconfirm
+print_success "Nemo plugins installed"
 
 # ============================================================================
 # Fonts
 # ============================================================================
 print_header "Installation: Fonts"
-sudo pacman -S otf-font-awesome nerd-fonts --noconfirm 
+sudo pacman -S otf-font-awesome nerd-fonts --noconfirm
 print_success "Fonts installed"
 
 # ============================================================================
-# Shenanigans 
+# Shenanigans
 # ============================================================================
 print_header "Install Shenanigans :3"
-sudo pacman -S sl uwufetch viu cowsay asciiquarium --noconfirm
+sudo pacman -S sl uwufetch viu cowsay asciiquarium fastfetch hyfetch --noconfirm
 print_success "Shenanigans installed owo"
 
 # ============================================================================
