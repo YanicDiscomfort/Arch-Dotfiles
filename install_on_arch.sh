@@ -225,7 +225,7 @@ echo -e "\n${BOLD}${GREEN}╔═════════════════
 echo -e "${BOLD}${GREEN}║          Installation completed successfully! 🎉               ║${NC}"
 echo -e "${BOLD}${GREEN}╚════════════════════════════════════════════════════════════════╝${NC}\n"
 
-print_info "Don't forget to switch to Hyprland in ly-dm!"
+print_info "Don't forget to switch to Hyprland(uwsm-managed) in the login-screen!"
 echo -e "\n${YELLOW}Do you want to reboot now? [y/n]${NC}"
 read -p "> " reboot_choice
 

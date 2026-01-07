@@ -28,20 +28,16 @@ chmod +x install_on_arch.sh && ./install_on_arch.sh
 ----
 
 ### Wallpaper
-Wallpaper source https://wall.alphacoders.com/big.php?i=1233212
-
-> the image is modified with [dpic](https://github.com/doprz/dipc), for the catppuccin mocha style
+- the Desktop Wallpaper is made by [Me](https://github.com/YanicDiscomfort)
+- the lock screen is made by ... i have no idea, if you are the creator pls contact me and i add credit or remove it
 
 
 ----
 
 ### Todo
 
-- [x] add clipboard manager
-- [x] fix gtk-theme dotfiles (wont apply automaticly)
 - [ ] add waybar config
-- [x] add fuzzel config
+- [ ] add wofi config
 - [ ] add swaync config
-- [x] add ly-dm config
 - [ ] add automaticly configure Dracut
 - [ ] make AUR-helper choosable
