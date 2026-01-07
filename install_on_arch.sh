@@ -204,9 +204,9 @@ sudo pacman -S zsh-autosuggestions zsh-syntax-highlighting zsh --noconfirm
 sudo chsh -s /bin/zsh $USER
 
 if [ ! -d ~/.oh-my-zsh ]; then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" <<EOF
-    N
-    EOF
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" # <<EOF
+    # N
+    # EOF
 fi
 
 git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
