@@ -162,7 +162,6 @@ print_success "Display manager configured"
 # ============================================================================
 print_header "Installation: Dotfiles"
 cp -rf config/* ~/.config/
-hyprctl reload
 print_success "Dotfiles applied"
 
 # ============================================================================
