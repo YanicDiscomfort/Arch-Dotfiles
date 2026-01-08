@@ -13,9 +13,9 @@ BOLD='\033[1m'
 ZSH_CUSTOM=~/.oh-my-zsh/custom
 
 print_header() {
-    echo -e "\n${BOLD}${CYAN}╔════════════════════════════════════════════════════════════════╗${NC}"
-    echo -e "${BOLD}${CYAN}║${NC} ${BOLD}${GREEN}$1${NC}"
-    echo -e "${BOLD}${CYAN}╚════════════════════════════════════════════════════════════════╝${NC}\n"
+    echo -e "\n${BOLD}${CYAN}══════════════════════════════════════════════════════════════════${NC}"
+    echo -e "${BOLD}${CYAN} ${NC} ${BOLD}${GREEN}$1${NC}"
+    echo -e "${BOLD}${CYAN}══════════════════════════════════════════════════════════════════${NC}\n"
 }
 
 print_success() {
@@ -221,7 +221,7 @@ print_success "Oh-My-Zsh installed"
 # Completion
 # ============================================================================
 echo -e "\n${BOLD}${GREEN}╔════════════════════════════════════════════════════════════════╗${NC}"
-echo -e "${BOLD}${GREEN}║          Installation completed successfully! 🎉               ║${NC}"
+echo -e "${BOLD}${GREEN}║          Installation completed successfully! 🎉                ║${NC}"
 echo -e "${BOLD}${GREEN}╚════════════════════════════════════════════════════════════════╝${NC}\n"
 
 print_info "Don't forget to switch to Hyprland(uwsm-managed) in the login-screen!"
