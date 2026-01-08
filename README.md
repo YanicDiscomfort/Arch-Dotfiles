@@ -17,7 +17,7 @@ My Dotfiles for Hyprland
 
 clone the repo
 ```sh
-git clone https://github.com/YanicDiscomfort/Hyprland-Dotfiles && cd Hyprland-Dotfiles
+git clone https://github.com/YanicDiscomfort/Arch-Dotfiles && cd Arch-Dotfiles
 ```
 
 run the install script as root
