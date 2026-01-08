@@ -119,7 +119,7 @@ print_success "Nemo plugins installed"
 # Fonts
 # ============================================================================
 print_header "Installation: Fonts"
-sudo pacman -S otf-font-awesome nerd-fonts --noconfirm
+sudo pacman -S otf-font-awesome nerd-fonts noto-fonts-emoji --noconfirm
 print_success "Fonts installed"
 
 # ============================================================================
