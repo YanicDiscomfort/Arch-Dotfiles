@@ -12,6 +12,7 @@ alias lsl="ls -l"
 alias gti="git"
 alias mkir="mkdir"
 alias cd..="cd .."
+alias yay="paru"
 
 # [ OH-MY-ZSH ]
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then

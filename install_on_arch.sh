@@ -34,6 +34,14 @@ print_info "Please enter sudo password..."
 sudo -v
 
 # ============================================================================
+# Update Pacman Conf
+# ============================================================================
+print_header "Update Pacman configuration"
+sudo cp pacman.conf /etc/pacman.conf -f
+
+print_success "successfully update pacman conf"
+
+# ============================================================================
 # System Update
 # ============================================================================
 print_header "System Update"
@@ -41,32 +49,25 @@ sudo pacman -Syyu --noconfirm
 print_success "System successfully updated"
 
 # ============================================================================
-# Essential Base Packages
-# ============================================================================
-print_header "Installation: Essential Base Packages"
-sudo pacman -S dracut ly pacman-contrib zsh --noconfirm
-print_success "Base packages installed"
-
-# ============================================================================
 # CLI Applications
 # ============================================================================
-print_header "Installation: Recommended CLI Applications"
-sudo pacman -S base-devel git neovim vi yazi bc unzip zip 7zip unrar btop \
-               ffmpeg imagemagick ripgrep --noconfirm
+print_header "Installation: Recommended Packages"
+sudo pacman -S base-devel git neovim yazi bc unzip zip 7zip unrar-free btop poppler resvg \
+               dracut pacman-contrib ffmpeg imagemagick ripgrep chafa fd fzf jq network-manager-applet --noconfirm
 print_success "CLI applications installed"
 
 # ============================================================================
 # Wayland & Graphics Drivers
 # ============================================================================
 print_header "Installation: Wayland & Graphics Drivers"
-sudo pacman -S mesa wayland xorg-xwayland qt6-wayland qt5-wayland --noconfirm
+sudo pacman -S lib32-mesa mesa sdl3 wayland xorg-xwayland xwayland-satellite uwsm --noconfirm
 print_success "Wayland & graphics drivers installed"
 
 # ============================================================================
 # GUI Packages
 # ============================================================================
 print_header "Installation: GUI Libraries"
-sudo pacman -S qt5 qt6 gtk3 gtk4 --noconfirm
+sudo pacman -S qt5 qt6 gtk3 gtk4 qt6-wayland qt5-wayland --noconfirm
 print_success "GUI libraries installed"
 
 # ============================================================================
@@ -74,7 +75,7 @@ print_success "GUI libraries installed"
 # ============================================================================
 print_header "Installation: Audio System (PipeWire)"
 sudo pacman -S pipewire pipewire-pulse pipewire-alsa pipewire-audio \
-               wireplumber --noconfirm
+               wireplumber playerctl --noconfirm
 print_success "Audio system installed"
 
 # ============================================================================
@@ -97,34 +98,28 @@ print_success "Bluetooth installed and enabled"
 # Desktop Components
 # ============================================================================
 print_header "Installation: Desktop Components"
-sudo pacman -S waybar wofi udiskie brightnessctl swaync wl-clipboard cliphist --noconfirm
+sudo pacman -S waybar fuzzel udiskie brightnessctl swaync wl-clipboard cliphist --noconfirm
 print_success "Desktop components installed"
 
 # ============================================================================
 # Desktop Applications
 # ============================================================================
 print_header "Installation: Recommended Desktop Applications"
-sudo pacman -S kitty qt6ct kvantum nwg-look pavucontrol nemo mpv amberol \
-               vivaldi vivaldi-ffmpeg-codecs papirus-icon-theme --noconfirm
+sudo pacman -S kitty qt6ct kvantum nwg-look mpv amberol \
+               vivaldi vivaldi-ffmpeg-codecs --noconfirm
 print_success "Desktop applications installed"
-
-# ============================================================================
-# Nemo Plugins
-# ============================================================================
-print_header "Installation: Nemo Plugins"
-sudo pacman -S nemo-fileroller ffmpegthumbnailer --noconfirm
-print_success "Nemo plugins installed"
 
 # ============================================================================
 # Fonts
 # ============================================================================
 print_header "Installation: Fonts"
-sudo pacman -S otf-font-awesome nerd-fonts noto-fonts-emoji --noconfirm
+sudo pacman -S otf-font-awesome ttf-nerd-fonts-symbols ttf-cascadia-mono-nerd noto-fonts noto-fonts-emoji --noconfirm
 print_success "Fonts installed"
 
 # ============================================================================
 # Shenanigans
 # ============================================================================
+# 3 system-info fetcher packages are REALLLY IMPORTANT
 print_header "Install Shenanigans :3"
 sudo pacman -S sl uwufetch viu cowsay asciiquarium fastfetch hyfetch --noconfirm
 print_success "Shenanigans installed owo"
@@ -136,45 +131,30 @@ print_header "Installation: Flatpak"
 sudo pacman -S xdg-desktop-portal-gtk flatpak --noconfirm
 print_success "Flatpak installed"
 
-# ============================================================================
-# paru (AUR Helper)
-# ============================================================================
-print_header "Installation: paru (AUR Helper)"
-sudo pacman -S rustup --noconfirm
-git clone https://aur.archlinux.org/paru.git
-rustup default nightly
-cd paru/
-makepkg -si --noconfirm
-cd ..
-rm -rf paru
-print_success "paru installed"
-
-# ============================================================================
-# Display Manager
-# ============================================================================
-print_header "Configuration: Display Manager (ly)"
-sudo systemctl enable ly@tty2.service
-sudo cp -f ly/config.ini /etc/ly/config.ini
-print_success "Display manager configured"
+if [ ! /usr/bin/paru ]; then
+    # ============================================================================
+    # paru (AUR Helper)
+    # ============================================================================
+    print_header "Installation: paru (AUR Helper)"
+    sudo pacman -S rustup --noconfirm
+    git clone https://aur.archlinux.org/paru.git
+    rustup install stable
+    cd paru/
+    makepkg -si --noconfirm
+    cd ..
+    rm -rf paru
+    print_success "paru installed"
+fi
 
 # ============================================================================
 # Dotfiles
 # ============================================================================
 print_header "Installation: Dotfiles"
+if [ ! -d ~/.config ]; then
+    mkdir -p ~/.config
+fi
 cp -rf config/* ~/.config/
 print_success "Dotfiles applied"
-
-# ============================================================================
-# Icons & Cursor
-# ============================================================================
-print_header "Installation: Icons & Cursor"
-if [ ! -d ~/.icons ]; then
-    mkdir -p ~/.icons
-fi
-sudo cp -r cursor/Bibata-Modern-Classic /usr/share/icons/
-sudo cp cursor/index.theme /usr/share/icons/default/index.theme
-cp -r icons/ ~/.icons/
-print_success "Icons & cursor installed"
 
 # ============================================================================
 # GTK & Folder Themes
@@ -187,19 +167,17 @@ cp -r themes/* ~/.themes/
 
 # Create GTK-4.0 symlinks
 mkdir -p "${HOME}/.config/gtk-4.0"
-ln -sf "${HOME}/.themes/gtk-4.0/assets" "${HOME}/.config/gtk-4.0/assets"
-ln -sf "${HOME}/.themes/gtk-4.0/gtk.css" "${HOME}/.config/gtk-4.0/gtk.css"
-ln -sf "${HOME}/.themes/gtk-4.0/gtk-dark.css" "${HOME}/.config/gtk-4.0/gtk-dark.css"
+# ln -sf "${HOME}/.themes/gtk-4.0/assets" "${HOME}/.config/gtk-4.0/assets"
+# ln -sf "${HOME}/.themes/gtk-4.0/gtk.css" "${HOME}/.config/gtk-4.0/gtk.css"
+# ln -sf "${HOME}/.themes/gtk-4.0/gtk-dark.css" "${HOME}/.config/gtk-4.0/gtk-dark.css"
 
-paru -S papirus-folders-catppuccin-git --noconfirm
-papirus-folders -C cat-mocha-red
 print_success "Themes installed"
 
 # ============================================================================
 # Oh-My-Zsh
 # ============================================================================
 print_header "Installation: Oh-My-Zsh"
-sudo pacman -S zsh-autosuggestions zsh-syntax-highlighting zsh --noconfirm
+sudo pacman -S zsh --noconfirm
 sudo chsh -s /bin/zsh $USER
 
 if [ ! -d ~/.oh-my-zsh ]; then
@@ -216,6 +194,16 @@ git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git $ZS
 paru -S --noconfirm zsh-theme-powerlevel10k-git
 cp zshrc ~/.zshrc
 print_success "Oh-My-Zsh installed"
+
+# ============================================================================
+# UWSM User Services
+# ============================================================================
+print_header "Enable User Services"
+systemctl --user enable hyprpolkitagent.service
+systemctl --user enable waybar.service
+systemctl --user enable hyprpaper.service
+
+print_success "successfully enable services"
 
 # ============================================================================
 # Completion
