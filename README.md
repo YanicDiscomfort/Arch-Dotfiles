@@ -1,12 +1,12 @@
 My Dotfiles for Hyprland
-- WM: Hyprland
-- App-Launcher: wofi
+- WM: Hyprland (uwsm-managed)
+- App-Launcher: fuzzel
 - Terminal: Kitty
-- File-Manager: nemo, yazi
+- File-Manager: yazi
 - Bar: Waybar
 - Browser: Vivaldi
 - Notifications: Swaync
-- Display-Manager: Ly-DM
+- Display-Manager: lemurs
 - Shell: zsh (with oh-my-zsh)
 
 -----
@@ -37,7 +37,6 @@ chmod +x install_on_arch.sh && ./install_on_arch.sh
 ### Todo
 
 - [ ] add waybar config
-- [ ] add wofi config
 - [ ] add swaync config
 - [ ] add automaticly configure Dracut
 - [ ] make AUR-helper choosable

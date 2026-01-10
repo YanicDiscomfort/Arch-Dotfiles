@@ -147,6 +147,16 @@ if [ ! /usr/bin/paru ]; then
 fi
 
 # ============================================================================
+# Display Manager
+# ============================================================================
+print_header "Install Display Manager"
+sudo pacman -S --noconfirm lemurs
+sudo systemctl enable lemurs
+sudo cp -f hyprland.desktop /usr/share/wayland-sessions/hyprland.desktop
+
+print_success "Successfully installed Display Manager"
+
+# ============================================================================
 # Dotfiles
 # ============================================================================
 print_header "Installation: Dotfiles"
@@ -165,13 +175,19 @@ if [ ! -d ~/.themes ]; then
 fi
 cp -r themes/* ~/.themes/
 
-# Create GTK-4.0 symlinks
 mkdir -p "${HOME}/.config/gtk-4.0"
-# ln -sf "${HOME}/.themes/gtk-4.0/assets" "${HOME}/.config/gtk-4.0/assets"
-# ln -sf "${HOME}/.themes/gtk-4.0/gtk.css" "${HOME}/.config/gtk-4.0/gtk.css"
-# ln -sf "${HOME}/.themes/gtk-4.0/gtk-dark.css" "${HOME}/.config/gtk-4.0/gtk-dark.css"
 
 print_success "Themes installed"
+
+# ============================================================================
+# Cursor & Icon Themes
+# ============================================================================
+print_header "Installation: Cursor & Icon Themes"
+if [ ! -d ~/.icons ]; then
+    mkdir -p ~/.icons
+fi
+cp -r icons/* ~/.icons/
+
 
 # ============================================================================
 # Oh-My-Zsh
