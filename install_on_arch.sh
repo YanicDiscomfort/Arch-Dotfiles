@@ -54,6 +54,7 @@ print_success "System successfully updated"
 print_header "Installation: Recommended Packages"
 sudo pacman -S base-devel git neovim yazi bc unzip zip 7zip unrar-free btop poppler resvg \
                dracut pacman-contrib ffmpeg imagemagick ripgrep chafa fd fzf jq network-manager-applet --noconfirm
+sudo systemctl enable paccache.timer
 print_success "CLI applications installed"
 
 # ============================================================================
