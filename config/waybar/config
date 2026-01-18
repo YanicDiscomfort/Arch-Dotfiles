@@ -21,12 +21,13 @@
     "persistent-workspaces": "|",
     "format": "{icon}",
     "format-icons": {
-      "1": "󰄰",
-      "2": "󰄰",
-      "3": "󰄰",
-      "4": "󰄰",
       "active": "󰄯",
       "default": "󰄰"
     }
+  },
+  "wireplumber": {
+    "format": "{volume}% ",
+    "format-muted": "",
+    "on-click": "hyprpwcenter"
   }
 }
