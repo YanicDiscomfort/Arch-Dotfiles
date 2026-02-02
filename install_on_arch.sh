@@ -106,7 +106,7 @@ print_success "Desktop components installed"
 # Desktop Applications
 # ============================================================================
 print_header "Installation: Recommended Desktop Applications"
-sudo pacman -S kitty qt6ct kvantum nwg-look mpv amberol \
+sudo pacman -S kitty qt6ct kvantum nwg-look nwg-displays mpv amberol \
                vivaldi vivaldi-ffmpeg-codecs --noconfirm
 print_success "Desktop applications installed"
 
