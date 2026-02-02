@@ -1,7 +1,11 @@
-# [ ENV-VAR ]
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# [ ENV ]
 export EDITOR="nvim"
 
-# [ ALIAS ]
+# [] ALIASES ]
 alias :q="exit"
 alias :c="clear"
 alias vim="nvim"
@@ -14,14 +18,20 @@ alias mkir="mkdir"
 alias cd..="cd .."
 alias yay="paru"
 
+# [ ZSH-SETTINGS ]
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+
 # [ OH-MY-ZSH ]
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+export ZSH="$HOME/.oh-my-zsh"
+
+ZSH_THEME="refined"
+
+plugins=(
+  git
+  zsh-autosuggestions
+  fast-syntax-highlighting
+)
+source $ZSH/oh-my-zsh.sh
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-export ZSH="$HOME/.oh-my-zsh"
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting zsh-autocomplete)
-source $ZSH/oh-my-zsh.sh
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
