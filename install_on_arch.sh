@@ -164,6 +164,7 @@ print_header "Installation: Dotfiles"
 if [ ! -d ~/.config ]; then
     mkdir -p ~/.config
 fi
+rm -rf ~/.config/$(ls config/)
 cp -rf config/* ~/.config/
 print_success "Dotfiles applied"
 
