@@ -16,7 +16,6 @@ alias lsl="ls -l"
 alias gti="git"
 alias mkir="mkdir"
 alias cd..="cd .."
-alias yay="paru"
 
 # [ ZSH-SETTINGS ]
 zstyle ':completion:*' use-cache on
