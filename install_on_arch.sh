@@ -157,9 +157,19 @@ print_success "Zen Browser installed"
 # Display Manager
 # ============================================================================
 print_header "Install Display Manager"
-sudo pacman -S --noconfirm lemurs
-sudo systemctl enable lemurs
+sudo pacman -S --noconfirm sddm
+sudo systemctl enable sddm
 sudo cp -f hyprland.desktop /usr/share/wayland-sessions/hyprland.desktop
+
+if [ ! -d /usr/share/sddm/themes ]; then
+    sudo mkdir -p /usr/share/sddm/themes
+fi
+sudo cp -r sddm/catppuccin-mocha-red
+
+if [ ! -d /etc/sddm.conf.d/ ]; then
+    sudo mkdir -p /etc/sddm.conf.d/
+fi
+sudo cp sddm/theme.conf /etc/sddm.conf.d/
 
 print_success "Successfully installed Display Manager"
 
