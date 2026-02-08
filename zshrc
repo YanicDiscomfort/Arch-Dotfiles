@@ -5,7 +5,7 @@ fi
 # [ ENV ]
 export EDITOR="nvim"
 
-# [] ALIASES ]
+# [ ALIASES ]
 alias :q="exit"
 alias :c="clear"
 alias vim="nvim"
