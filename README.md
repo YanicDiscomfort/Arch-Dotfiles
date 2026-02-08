@@ -4,14 +4,14 @@ My Dotfiles for Hyprland
 - Terminal: Kitty
 - File-Manager: yazi
 - Bar: Waybar
-- Browser: Vivaldi
+- Browser: Zen
 - Notifications: Swaync
 - Display-Manager: lemurs
 - Shell: zsh (with oh-my-zsh)
 
 -----
 
-### installation
+## installation
 
 - the install script works on arch /-based distros
 
@@ -27,16 +27,19 @@ chmod +x install_on_arch.sh && ./install_on_arch.sh
 
 ----
 
-### Wallpaper
+## Wallpaper
 - the Desktop Wallpaper is made by [Me](https://github.com/YanicDiscomfort)
 - the lock screen is made by ... i have no idea, if you are the creator pls contact me and i add credit or remove it
 
+![Wallpaper preview](./config/hypr/assets/wallpaper_full-hd.png)
 
 ----
 
 ### Todo
 
-- [ ] add waybar config
-- [ ] add swaync config
-- [ ] add automaticly configure Dracut
-- [ ] make AUR-helper choosable
+- add os-fetcher config
+- add sddm
+- add swaync config
+- add automaticly configure Dracut
+- make AUR-helper choosable
+- lookup on quickshell
