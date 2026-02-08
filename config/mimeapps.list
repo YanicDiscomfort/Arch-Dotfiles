@@ -1,17 +1,15 @@
 [Added Associations]
-application/pdf=com.github.xournalpp.xournalpp.desktop;org.gnome.Evince.desktop;vivaldi-stable.desktop;
+application/pdf=com.github.xournalpp.xournalpp.desktop
 application/x-desktop=nvim.desktop;
-image/png=vivaldi-stable.desktop;
+image/png=Zen.desktop;
 inode/directory=obsidian.desktop;
 
 [Default Applications]
 application/x-desktop=nvim.desktop
-x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
 x-scheme-handler/discord=vesktop.desktop
-inode/directory=thunar.desktop
-text/html=vivaldi-stable.desktop
-x-scheme-handler/http=vivaldi-stable.desktop
-x-scheme-handler/https=vivaldi-stable.desktop
-x-scheme-handler/about=vivaldi-stable.desktop
-x-scheme-handler/unknown=vivaldi-stable.desktop
-application/pdf=vivaldi-stable.desktop
+inode/directory=nemo.desktop
+text/html=zen.desktop
+x-scheme-handler/http=zen.desktop
+x-scheme-handler/https=zen.desktop
+x-scheme-handler/about=zen.desktop
+x-scheme-handler/unknown=zen.desktop
