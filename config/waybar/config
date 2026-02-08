@@ -69,7 +69,7 @@
   },
   "custom/notification": {
     "tooltip": true,
-    "format": "{0} {icon}",
+    "format": "{icon} {0}",
     "format-icons": {
       "notification": "󱅫",
       "none": "󰂜",
