@@ -106,8 +106,7 @@ print_success "Desktop components installed"
 # Desktop Applications
 # ============================================================================
 print_header "Installation: Recommended Desktop Applications"
-sudo pacman -S kitty qt6ct kvantum nwg-look nwg-displays mpv amberol \
-               vivaldi vivaldi-ffmpeg-codecs --noconfirm
+sudo pacman -S kitty qt6ct kvantum nwg-look nwg-displays mpv amberol --noconfirm
 print_success "Desktop applications installed"
 
 # ============================================================================
@@ -132,10 +131,10 @@ print_header "Installation: Flatpak"
 sudo pacman -S xdg-desktop-portal-gtk flatpak --noconfirm
 print_success "Flatpak installed"
 
+# ============================================================================
+# paru (AUR Helper)
+# ============================================================================
 if [ ! /usr/bin/paru ]; then
-    # ============================================================================
-    # paru (AUR Helper)
-    # ============================================================================
     print_header "Installation: paru (AUR Helper)"
     sudo pacman -S rustup --noconfirm
     git clone https://aur.archlinux.org/paru.git
@@ -146,6 +145,13 @@ if [ ! /usr/bin/paru ]; then
     rm -rf paru
     print_success "paru installed"
 fi
+
+# ============================================================================
+# Browser
+# ============================================================================
+print_header "Installation: Zen Browser"
+paru -S zen-browser-bin --noconfirm
+print_success "Zen Browser installed"
 
 # ============================================================================
 # Display Manager
