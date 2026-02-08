@@ -196,6 +196,12 @@ if [ ! -d ~/.icons ]; then
 fi
 cp -r icons/* ~/.icons/
 
+if [ ! -d ~/.local/share/icons/ ]; then
+    mkdir -p ~/.local/share/icons/
+fi
+cp -rf Nordzy-red-dark ~/.local/share/icons/
+gsettings set org.gnome.desktop.interface icon-theme "Nordzy-red-dark"
+
 
 # ============================================================================
 # Oh-My-Zsh
