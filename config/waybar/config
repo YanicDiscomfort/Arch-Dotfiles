@@ -9,14 +9,18 @@
     "hyprland/workspaces"
   ],
   "modules-center": [
-    "clock"
+    "custom/music"
   ],
   "modules-right": [
     "wireplumber",
-    "tray",
-    "battery"
+    "battery",
+    "clock",
+    "memory",
+    "cpu",
+    "tray"
   ],
   "reload_style_on_change": true,
+
   "hyprland/workspaces": {
     "persistent-workspaces": "|",
     "format": "{icon}",
@@ -34,8 +38,32 @@
     }
   },
   "wireplumber": {
-    "format": "{volume}% ",
-    "format-muted": "",
+    "format": "  {volume}%",
+    "format-muted": "   0%",
     "on-click": "hyprpwcenter"
+  },
+  "clock": {
+    "format": "  {:%H:%M}",
+    "tooltip": true,
+    "tooltip-format": "{:%a %d %b}"
+  },
+  "memory": {
+    "format": "  {}%"
+  },
+  "cpu": {
+    "format": "  {}%"
+  },
+  "tray": {
+    "spacing": 10
+  },
+
+  "custom/music": {
+    "format": "  {}",
+    "escape": true,
+    "interval": 5,
+    "tooltip": false,
+    "exec": "playerctl metadata --format='{{ title }}'",
+    "on-click": "playerctl play-pause",
+    "max-length": 50
   }
 }

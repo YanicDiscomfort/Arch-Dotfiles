@@ -1,14 +1,64 @@
+@import "./mocha.css";
+
 * {
+	font-family: FantasqueSansMNerdFont;
+	font-size: 17px;
+	min-height: 0;
 	padding: 2px;
 }
 
-window#waybar {
-	background-color: #181825;
+#waybar {
 	border-radius: 10px;
-	border: 2px #f38ba8 solid;
+	background-color: @crust;
+	color: @text;
 }
 
-label.module {
-	padding-right: 10px;
-	padding-left: 10px;
+#workspaces,
+#custom-music,
+#wireplumber,
+#battery,
+#clock,
+#memory,
+#cpu,
+#tray
+{
+	border-radius: 10px;
+	margin: 5px;
+	background-color: @base;
+	padding-right: 24px;
+	padding-left: 24px;
+	color: @base;
+}
+
+#workspaces button {
+	color: @overlay0;
+}
+
+#workspaces button.active {
+	color: @text;
+}
+
+#custom-music {
+	background-color: @red;
+}
+
+#wireplumber {
+	background-color: @mauve;
+	color: @base;
+}
+
+#battery {
+	background-color: @green;
+}
+
+#clock {
+	background-color: @yellow;
+}
+
+#memory {
+	background-color: @green;
+}
+
+#cpu {
+	background-color: @peach;
 }

@@ -114,7 +114,7 @@ print_success "Desktop applications installed"
 # Fonts
 # ============================================================================
 print_header "Installation: Fonts"
-sudo pacman -S otf-font-awesome ttf-nerd-fonts-symbols ttf-cascadia-mono-nerd noto-fonts noto-fonts-cjk noto-fonts-emoji --noconfirm
+sudo pacman -S otf-font-awesome ttf-nerd-fonts-symbols ttf-fantasque-sans-mono noto-fonts noto-fonts-cjk noto-fonts-emoji ttf-firacode-nerd --noconfirm
 print_success "Fonts installed"
 
 # ============================================================================
