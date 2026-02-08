@@ -38,7 +38,6 @@ chmod +x install_on_arch.sh && ./install_on_arch.sh
 ### Todo
 
 - add os-fetcher config
-- add swaync config
 - add automaticly configure Dracut
 - make AUR-helper choosable
 - lookup on quickshell

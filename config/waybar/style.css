@@ -20,6 +20,7 @@
 #clock,
 #memory,
 #cpu,
+#custom-notification,
 #tray
 {
 	border-radius: 10px;
@@ -52,7 +53,7 @@
 }
 
 #clock {
-	background-color: @yellow;
+	background-color: @blue;
 }
 
 #memory {
@@ -61,4 +62,8 @@
 
 #cpu {
 	background-color: @peach;
+}
+
+#custom-notification {
+	background-color: @yellow;
 }
