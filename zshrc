@@ -5,7 +5,7 @@ fi
 # [ ENV ]
 export EDITOR="nvim"
 
-# [ ALIASES ]
+# [] ALIASES ]
 alias :q="exit"
 alias :c="clear"
 alias vim="nvim"
@@ -16,6 +16,8 @@ alias lsl="ls -l"
 alias gti="git"
 alias mkir="mkdir"
 alias cd..="cd .."
+alias yay="paru"
+alias ssh="kitten ssh"
 
 # [ ZSH-SETTINGS ]
 zstyle ':completion:*' use-cache on
