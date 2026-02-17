@@ -11,6 +11,7 @@
 	border-radius: 10px;
 	background-color: @crust;
 	color: @text;
+    border: @base solid 2px;
 }
 
 #workspaces,
