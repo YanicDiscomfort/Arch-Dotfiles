@@ -59,12 +59,13 @@
   },
 
   "custom/music": {
-    "format": "  {}",
+    "format": "  {}",
     "escape": true,
     "interval": 5,
     "tooltip": false,
-    "exec": "playerctl metadata --format='{{ title }}'",
+    "exec": "playerctl metadata --format=' {{ title }}'; echo ' '",
     "on-click": "playerctl play-pause",
+    "hide-empty-text": false,
     "max-length": 50
   },
   "custom/notification": {
