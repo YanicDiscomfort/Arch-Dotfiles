@@ -99,7 +99,7 @@ print_success "Bluetooth installed and enabled"
 # Desktop Components
 # ============================================================================
 print_header "Installation: Desktop Components"
-sudo pacman -S waybar fuzzel udiskie brightnessctl swaync wl-clipboard cliphist flameshot --noconfirm
+sudo pacman -S waybar fuzzel udiskie brightnessctl swaync wl-clipboard cliphist flameshot grim --noconfirm
 print_success "Desktop components installed"
 
 # ============================================================================
