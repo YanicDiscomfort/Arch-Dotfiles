@@ -134,7 +134,7 @@ print_success "Flatpak installed"
 # ============================================================================
 # paru (AUR Helper)
 # ============================================================================
-if [ /usr/bin/paru ]; then
+if [ ! /usr/bin/paru ]; then
     print_header "Installation: paru (AUR Helper)"
     sudo pacman -S rustup --noconfirm
     git clone https://aur.archlinux.org/paru.git
