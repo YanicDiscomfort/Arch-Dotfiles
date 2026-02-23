@@ -134,7 +134,7 @@ print_success "Flatpak installed"
 # ============================================================================
 # paru (AUR Helper)
 # ============================================================================
-if [ ! /usr/bin/paru ]; then
+if [ /usr/bin/paru ]; then
     print_header "Installation: paru (AUR Helper)"
     sudo pacman -S rustup --noconfirm
     git clone https://aur.archlinux.org/paru.git
@@ -164,7 +164,7 @@ sudo cp -f hyprland.desktop /usr/share/wayland-sessions/hyprland.desktop
 if [ ! -d /usr/share/sddm/themes ]; then
     sudo mkdir -p /usr/share/sddm/themes
 fi
-sudo cp -r sddm/catppuccin-mocha-red
+sudo cp -r sddm/catppuccin-mocha-red /usr/share/sddm/themes
 
 if [ ! -d /etc/sddm.conf.d/ ]; then
     sudo mkdir -p /etc/sddm.conf.d/

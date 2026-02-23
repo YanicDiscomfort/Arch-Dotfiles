@@ -6,7 +6,7 @@ My Dotfiles for Hyprland
 - Bar: Waybar
 - Browser: Zen
 - Notifications: Swaync
-- Display-Manager: lemurs
+- Display-Manager: SDDM
 - Shell: zsh (with oh-my-zsh)
 
 -----
@@ -38,6 +38,5 @@ chmod +x install_on_arch.sh && ./install_on_arch.sh
 ### Todo
 
 - add os-fetcher config
-- add automaticly configure Dracut
 - make AUR-helper choosable
 - lookup on quickshell
